@@ -21,6 +21,7 @@ public class MessageProcessor
 
     async Task MessageHandler(ProcessMessageEventArgs args)
     {
+        using var activity = ActivityConfig.Source.StartActivity("Receive Message");
         string body = args.Message.Body.ToString();
         Console.WriteLine($"Received: {body}");
 

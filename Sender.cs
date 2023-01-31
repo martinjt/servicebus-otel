@@ -10,6 +10,7 @@ public class MessageSender
 
     public async Task SendMessageBatch(int numOfMessages)
     {
+        using var activity = ActivityConfig.Source.StartActivity("Send Batch");
         using ServiceBusMessageBatch messageBatch = await _sender.CreateMessageBatchAsync();
 
         for (int i = 1; i <= numOfMessages; i++)
